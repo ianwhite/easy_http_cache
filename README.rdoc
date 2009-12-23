@@ -1,13 +1,4 @@
-Easy HTTP Cache
-License: MIT
-Version: 2.1
-
-You can also read this README in pretty html at the GitHub project Wiki page
-
-  http://github.com/josevalim/easy_http_cache/wikis/home
-
-Description
------------
+== Easy HTTP Cache
 
 Allows Rails applications to do conditional cache easily and in a DRY way
 (without messing up your actions):
@@ -50,52 +41,21 @@ Read more about each option (more examples at the end of this page):
     If in :last_modified you want to pass a object that doesn't respond to updated_at,
     updated_on or to_time, you can specify the method that will be called in this object.
 
+== Install
 
-Install
--------
+Install Easy HTTP Cache is available on gemcutter, so just execute:
 
-Install Easy HTTP Cache is very easy. It is stored in GitHub, so if you
-have never installed a gem via GitHub run the following:
+  sudo gem install easy_http_cache
 
-  gem sources -a http://gems.github.com
-  sudo gem install josevalim-easy_http_cache
+And add it to your environment.
 
-In RAILS_ROOT/config/environment.rb:
-
-  config.gem "josevalim-easy_http_cache",  :lib => "easy_http_cache", :source => "http://gems.github.com"
-
-If you want it as plugin, just do:
-
-    cd myapp
-    git clone git://github.com/josevalim/easy_http_cache.git
-    rm -rf vendor/plugins/easy_http_cache/.git
-
-Current version supports Rails 2.2.x and Rails 2.3.x.
-
-Previous versions
------------------
-
-If you are running on Rails 2.1.x, you should use v1.2.3:
-
-    cd myapp
-    git clone git://github.com/josevalim/easy_http_cache.git
-    cd vendor/plugins/easy_http_cache
-    git checkout v1.2.3
-    rm -rf ./.git
-
-If you are using earlier than 2.1, please upgrade your app. =)
-
-
-Variables
----------
+== Environment Variables
 
 As in memcached, you can set ENV['RAILS_CACHE_ID'] or ENV['RAILS_APP_VERSION'] variables
 to change the Etag that will be generated. This means you can control the cache by setting
 a timestamp or a version number in ENV['RAILS_APP_VERSION'] everytime you deploy.
 
-
-Examples
---------
+== Examples
 
 The example below will cache your actions and it will never expire:
 
@@ -178,22 +138,18 @@ Finally, you can also pass an array at :last_modified as below:
 This will check which one is the most recent to compare with the
 "Last-Modified" field sent by the client.
 
-
-What if?
---------
+== What if?
 
 At this point (or at some point), you will ask what happens if you use :etag
 and :last_modified at the same time.
 
-Well, Padawan, the specification says that if both are sent by the client, both have
+Well, the specification says that if both are sent by the client, both have
 to be valid for the cache not be considered stale. This subject was already brought
 to Rails Core group and this is also how Rails' current implementation behaves.
 
-Bugs and Feedback
------------------
+== Bugs and Feedback
 
-If you discover any bugs, please send an e-mail to jose.valim@gmail.com
-If you just want to give some positive feedback or drop a line, that's fine too! =)
+If you find any issues, please use Github issues tracker.
 
 Copyright (c) 2009 José Valim
 http://blog.plataformatec.com.br/
