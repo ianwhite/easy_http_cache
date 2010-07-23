@@ -33,7 +33,7 @@ module ActionController #:nodoc:
         end
 
         def filter(controller)
-          return unless flash.empty? && controller.request.get?
+          return unless controller.send(:flash).empty? && controller.request.get?
 
           last_modified = get_last_modified(controller)
           controller.response.last_modified = last_modified if last_modified
