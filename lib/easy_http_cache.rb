@@ -3,13 +3,15 @@ module ActionController #:nodoc:
     module HttpCache
       def self.included(base) #:nodoc:
         base.extend(ClassMethods)
+        base.mattr_accessor :perform_http_caching
       end
 
       module ClassMethods
         # Declares that +actions+ should be cached.
         #
         def http_cache(*actions)
-          return unless perform_caching
+          return unless perform_http_caching || perform_caching
+          
           options = actions.extract_options!
 
           options.assert_valid_keys(
